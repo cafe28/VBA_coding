@@ -1,2 +1,7 @@
-# VBA_coding
-Sample of VBA skills
+The script consists of two parts. First, we loop over all the historical ticker data, compressing it into a single row with yearly change, percentage change, and total volume. Second, we loop over the generated compressed data to find the greatest increase, decrease and total volume values.
+
+We begin by defining variables ouside the loop so that they are persisted outside of the context of current loop cycle. Within the loop, we store the ticker name and the first row of the current ticker and calculate the total volume by adding the volume value to the total variable on each row. A condition is used to check if the next row contains a different ticker name, indicating that this is the last row of the current ticker. On the last row of the ticker, we retrieve the open and closed prices, calculate the difference, and write all the values to the appropriate cells. A separate index variable is used to know to what row this data should be written. When this is done, we reset the total value and move the indexes to the next row.
+
+In order to find the greatest increase, greatest decrease and greatest total volume, we loop over each row of the newly generated data. First, we define variables outside the loop that will store the values that match the desired criteria the most. Then, while going down the list, we compare values from each row with the stored value to see if it matches the criteria better. If so, we replace the existing stored value with the new one from the current row.
+
+All of the above is applied to each worksheet using another loop.
